@@ -10,4 +10,5 @@ steps to test
 
 
 T0-D0
+- Fix DELETE method
 - 
