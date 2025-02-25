@@ -2,7 +2,7 @@ from fastapi import FastAPI, Depends, HTTPException
 from sqlalchemy.orm import Session
 from schemas import PostCreate, PostUpdate, Post
 from database import SessionLocal, engine, Base
-from crud import create_post as create_post_crud, get_post as get_post_crud , get_posts as get_posts_crud, update_post as update_post_crud, delete_post
+from crud import create_post as create_post_crud, get_post as get_post_crud , get_posts as get_posts_crud, update_post as update_post_crud, delete_post as delete_post_curd
 
 
 app = FastAPI()
@@ -47,7 +47,7 @@ def update_post(post_id: int, post: PostUpdate, db: Session = Depends(get_db)):
 
 @app.delete("/posts/{post_id}")
 def delete_post(post_id: int, db: Session = Depends(get_db)):
-    db_post = delete_post(db, post_id)
+    db_post = delete_post_curd(db, post_id)
     if db_post is None:
         raise HTTPException(status_code=404, detail="Post not found")
     return {"message": "Post deleted successfully"}
