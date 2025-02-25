@@ -6,6 +6,7 @@ steps to test
 - install (uvicorn, fastapi, sqlalchemy, pydantic) with pip
 - running the server 'uvicorn main:app --reload'
 - test with curl sending 'POST'
+- also check localhost:8000/docs
 
 
 T0-D0
