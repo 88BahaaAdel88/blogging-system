@@ -3,11 +3,20 @@ from sqlalchemy.orm import Session
 from schemas import PostCreate, PostUpdate, Post
 from database import SessionLocal, engine, Base
 from crud import create_post as create_post_crud, get_post as get_post_crud , get_posts as get_posts_crud, update_post as update_post_crud, delete_post as delete_post_curd
+from fastapi.middleware.cors import CORSMiddleware
 
 
 app = FastAPI()
 
 Base.metadata.create_all(bind=engine)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],  # Vite's default port
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 def get_db():
